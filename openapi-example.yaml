@@ -1,0 +1,19 @@
+openapi: 3.0.0
+info:
+  title: Go Hello World
+  version: 1.0.0
+
+paths:
+  /{name}:
+    get:
+      x-yc-apigateway-integration:
+        type: cloud_functions
+        function_id: <идентификатор функции>
+        context:
+          name: '{name}'
+      parameters:
+        - in: path
+          name: name
+          required: true
+          schema:
+            type: string
